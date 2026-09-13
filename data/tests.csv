@@ -1,0 +1,11 @@
+TestID,TestName,Subject,MaxMarks,TestDate
+T001,Mock Test 1,Physics,100,2026-07-01
+T002,Mock Test 2,Mathematics,100,2026-07-02
+T003,Mock Test 3,Mathematics,100,2026-07-03
+T004,Mock Test 4,Chemistry,100,2026-07-04
+T005,Mock Test 5,Chemistry,100,2026-07-05
+T006,Mock Test 6,Chemistry,100,2026-07-06
+T007,Mock Test 7,Physics,100,2026-07-07
+T008,Mock Test 8,Physics,100,2026-07-08
+T009,Mock Test 9,Mathematics,100,2026-07-09
+T010,Mock Test 10,Chemistry,100,2026-07-10

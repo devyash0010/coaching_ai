@@ -1,0 +1,4 @@
+sentence-transformers
+pgvector
+psycopg2
+json

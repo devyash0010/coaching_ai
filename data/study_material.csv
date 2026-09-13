@@ -1,0 +1,13 @@
+MaterialID,Subject,Chapter,PDFName
+M001,Physics,Kinematics,Kinematics.pdf
+M002,Physics,NLM,NLM.pdf
+M003,Physics,Work Energy,Work_Energy.pdf
+M004,Physics,Electrostatics,Electrostatics.pdf
+M005,Chemistry,Atomic Structure,Atomic_Structure.pdf
+M006,Chemistry,Chemical Bonding,Chemical_Bonding.pdf
+M007,Chemistry,Thermodynamics,Thermodynamics.pdf
+M008,Chemistry,Organic Basics,Organic_Basics.pdf
+M009,Mathematics,Quadratic,Quadratic.pdf
+M010,Mathematics,Calculus,Calculus.pdf
+M011,Mathematics,Vectors,Vectors.pdf
+M012,Mathematics,Probability,Probability.pdf

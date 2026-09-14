@@ -1,22 +1,13 @@
-# from sentence_transformers import SentenceTransformer
-# from db import get_connection
-
-# model = SentenceTransformer("all-mpnet-base-v2")
-
-# conn = get_connection()
-# cur = conn.cursor()
-
-# print("Database Connected")
-# # print("Embedding Model Loaded")
 import json
 from sentence_transformers import SentenceTransformer
 from pgvector.psycopg2 import register_vector
 
-from db import get_connection
+from backend.config import settings
+from database.db import get_connection
 
 
 print("Loading embedding model...")
-model = SentenceTransformer("all-mpnet-base-v2")
+model = SentenceTransformer(settings.EMBEDDING_MODEL)
 print("✅ Embedding model loaded")
 
 # Database connection

@@ -2,14 +2,9 @@ from pydantic import BaseModel
 
 
 class LoginRequest(BaseModel):
-
     email: str
-
     password: str
 
-
-
-from pydantic import BaseModel
 
 class TeacherLogin(BaseModel):
     email: str
@@ -18,9 +13,3 @@ class TeacherLogin(BaseModel):
 
 class ChatRequest(BaseModel):
     question: str
-
-
-
-class ChatRequest(BaseModel):
-
-    question:str

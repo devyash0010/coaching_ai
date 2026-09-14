@@ -1,21 +1,3 @@
-import psycopg2
-from config import DATABASE_CONFIG
+from database.db import get_connection
 
-
-def get_connection():
-
-    conn = psycopg2.connect(
-
-        host=DATABASE_CONFIG["host"],
-
-        port=DATABASE_CONFIG["port"],
-
-        database=DATABASE_CONFIG["database"],
-
-        user=DATABASE_CONFIG["user"],
-
-        password=DATABASE_CONFIG["password"]
-
-    )
-
-    return conn
+__all__ = ["get_connection"]

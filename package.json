@@ -1,0 +1,14 @@
+{
+  "name": "coaching-ai-root",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n BACKEND,FRONTEND -c green,blue \"python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000\" \"cross-env VITE_API_BASE_URL=http://localhost:8000 npm --prefix frontend run dev\"",
+    "build": "npm --prefix frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "latest",
+    "cross-env": "latest"
+  }
+}

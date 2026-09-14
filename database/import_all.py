@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
-from db import get_connection
+from database.db import get_connection
 
 
 # ==========================================================

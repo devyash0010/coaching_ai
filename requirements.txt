@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+psycopg2-binary
+python-dotenv
+passlib[bcrypt]
+python-jose
+pydantic
+pydantic-settings
+sentence-transformers
+pgvector
+ollama
+sqlalchemy
+pandas
+

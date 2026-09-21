@@ -4,14 +4,14 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def authenticate_teacher(email: str, password: str) -> bool:
-    """Canonical auth hook for the current MVP.
+    # """Canonical auth hook for the current MVP.
 
-    This repo has no teacher table model yet, so the authentication layer
-    should remain simple and secure by checking that the input request has
-    the expected structure and non-empty secret-bearing fields. The real
-    database-backed teacher model can be added later without changing the
-    interface shape.
-    """
+    # This repo has no teacher table model yet, so the authentication layer
+    # should remain simple and secure by checking that the input request has
+    # the expected structure and non-empty secret-bearing fields. The real
+    # database-backed teacher model can be added later without changing the
+    # interface shape.
+    # """
     if not email or not password:
         return False
     if len(password) < 4:

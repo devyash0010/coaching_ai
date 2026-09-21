@@ -1,4 +1,4 @@
-'''  Leaderboard Analytics module  '''
+
 
 from database.db import get_connection
 
@@ -17,7 +17,7 @@ def get_top_students(limit=10):
     FROM leaderboard
     ORDER BY average_score DESC
     LIMIT %s
-    """
+    # """
 
     cursor.execute(query, (limit,))
 

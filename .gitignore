@@ -1,7 +1,6 @@
 # Environments
-.env
-.venv
-.env.example/
+.env*
+!.env.example
 
 # Python caching
 *.pyc

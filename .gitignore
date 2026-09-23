@@ -1,5 +1,11 @@
+# Environments
 .env
+.venv
+.env.example/
+
+# Python caching
 *.pyc
 __pycache__/
-.venv/
+
+# JavaScript dependencies
 node_modules/

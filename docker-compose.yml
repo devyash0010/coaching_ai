@@ -1,0 +1,71 @@
+# Coaching AI — backend (FastAPI + RAG) + frontend (React/Vite via nginx).
+#
+# Reuses the ALREADY-CREATED PostgreSQL/pgvector vector database container
+# `coaching-vector-db` (published on host port 5433) and the running Ollama
+# container `free-ai-agent-ollama-1` (on the external network
+# `free-ai-agent_default`). Neither is recreated here.
+
+name: coaching-ai
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: coaching-ai-backend
+    ports:
+      - "8000:8000"
+    environment:
+      # DB: reach the existing vector DB through its published host port.
+      POSTGRES_HOST: host.docker.internal
+      POSTGRES_PORT: "5433"
+      POSTGRES_DB: coaching_ai
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: devyash@0310
+      # Ollama: reach the existing Ollama container by name on its network.
+      OLLAMA_HOST: http://free-ai-agent-ollama-1:11434
+      OLLAMA_MODEL: qwen3:4b
+      # The entrypoint resolves this to a local snapshot in the mounted cache
+      # (the repo-id form fails HF offline validation on a Windows cache).
+      EMBEDDING_MODEL: all-mpnet-base-v2
+      # Use the bind-mounted cache only; never hit the network (avoids stalls).
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      BACKEND_URL: http://localhost:8000
+      FRONTEND_URL: http://localhost:3000
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+      SECRET_KEY: change-me
+      ALGORITHM: HS256
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # Mount the host's existing HuggingFace cache so the embedding model
+      # (all-mpnet-base-v2) is available without a slow/stalled download.
+      # Override HOST_HF_CACHE in .env if your cache lives elsewhere.
+      - ${HOST_HF_CACHE:-C:/Users/devyash/.cache/huggingface}:/root/.cache/huggingface
+    networks:
+      - coaching_net
+      - ollama_net
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:8000
+    container_name: coaching-ai-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - coaching_net
+    restart: unless-stopped
+
+networks:
+  coaching_net:
+  ollama_net:
+    # Existing Docker network that hosts the running Ollama container.
+    external: true
+    name: free-ai-agent_default
